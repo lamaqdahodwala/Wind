@@ -13,10 +13,4 @@ class QuestionViewSet(
 ):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    pass
-
-    @action(detail=True, methods=['GET'])
-    def get_single_question(self, req, pk):
-        question = self.get_object()
-        ser = QuestionSerializer(question)
-        return Response(ser.data)
+    
