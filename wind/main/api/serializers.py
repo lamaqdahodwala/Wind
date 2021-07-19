@@ -9,4 +9,4 @@ class QuestionSerializer(ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ("op", "title", "body")
+        fields = ("op", "title", "body", 'id')

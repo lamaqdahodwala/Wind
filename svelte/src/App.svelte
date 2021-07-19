@@ -15,7 +15,7 @@
             {#each data as i}
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="card-header-title title">{i.title}</h1>
+                        <a href="/question/{i.id}" class="card-header-title title">{i.title}</a>
                     </div>
                     <div class="card-content">
                         <p class="content">
