@@ -7,6 +7,3 @@ class Question(models.Model):
     title = models.CharField(max_length=300)
     body = models.TextField()
     time_created = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-id']
