@@ -23,6 +23,7 @@
                         </p>
                     </div>
                 </div>
+                <br><br>
             {/each}
         </div>
     {:catch error}
