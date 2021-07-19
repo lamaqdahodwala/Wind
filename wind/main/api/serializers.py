@@ -5,10 +5,4 @@ from rest_framework.serializers import  ModelSerializer
 class QuestionSerializer(ModelSerializer):
     class Meta:
         model = Question
-        fields = '__all__'
-    
-    def create(self, validated_data):
-        uid = validated_data.pop('op_id', None)
-        user = User.objects.get(pk=uid)
-
-        return Question.objects.create(user=user, **validated_data)
+        fields = ('op', 'title', 'body')
