@@ -12,7 +12,7 @@
         <progress class="progress"></progress>
     {:then data} 
         <div class="container">
-            {#each data as i}
+            {#each data.reverse() as i}
                 <div class="card">
                     <div class="card-header">
                         <a href="/question/{i.id}" class="card-header-title title">{i.title}</a>
