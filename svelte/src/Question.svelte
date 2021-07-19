@@ -14,11 +14,14 @@
         <div class="container">
             <div class="box is-fluid">
                 <h1 class="title">{data.title}</h1>
+                <h1 class="subtitle">Written by {data.op.username}</h1>
                 <hr>
                 <p class="content">
                     {data.body}
                 </p>
             </div>
         </div>
+    {:catch error}
+        <p>{error}</p>
     {/await}
 </main>
