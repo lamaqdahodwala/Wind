@@ -15,3 +15,9 @@ class QuestionViewSet(
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     
+    @action(methods=['GET'], url_path='get_user_pk', detail=False)
+    def get_user_pk(self, req):
+        if req.user.is_authenticated:
+            return Response(data={'pk': req.user.pk})
+        else:
+            return Response(data={'pk': "null"})
