@@ -4,6 +4,6 @@
 
 {% load django_svelte %} 
 
-{% display_svelte 'Question.svelte' %} 
+{% display_svelte 'Question.svelte' {'pk': pk} %} 
 
 {% endblock %} 
