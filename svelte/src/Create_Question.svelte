@@ -3,7 +3,7 @@
     let title, body;
     
     async function create_question(){
-        let resp = fetch('/api/v1/question/', {
+        let resp = await fetch('/api/v1/question/', {
             method: "POST",
             headers: {
                 "X-CSRFToken": getCookie('csrftoken'),
@@ -15,13 +15,8 @@
                 "body": body
             })
         })
-        resp
-        .then((val) => {
-            alert("Success", val)
-        })
-        .catch((err) => {
-            alert(err)
-        })
+        let data = await resp.json()
+        window.location.pathname = `/question/${data.id}`
     }
 </script>
 

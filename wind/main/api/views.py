@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .serializers import QuestionSerializer
+from .serializers import QuestionSerializer, UserSerializer
 from ..models import Question
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
@@ -15,3 +16,10 @@ class QuestionViewSet(
 ):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+class UserViewSet(
+    mixins.RetrieveModelMixin,
+    GenericViewSet
+):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

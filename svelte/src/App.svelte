@@ -4,11 +4,10 @@
         let txt = resp.json()
         return txt
     }
-    let question_promise = get_questions()
 </script>
 
 <main>
-    {#await question_promise}
+    {#await get_questions()}
         <progress class="progress"></progress>
     {:then data} 
         <div class="container">
