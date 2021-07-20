@@ -4,12 +4,9 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 
 
-class UserSerializer(ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('username',)
+
 class QuestionSerializer(ModelSerializer):
-    op = UserSerializer()
+    op = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Question
         fields = ("op", "title", "body", 'id')
