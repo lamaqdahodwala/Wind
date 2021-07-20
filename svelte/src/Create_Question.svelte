@@ -24,10 +24,10 @@
     <div class="container">
         <h1 class="title">New Question</h1>
         <div class="container">
-            <input type="text" bind:value={title} placeholder="Epic title...">
+            <input type="text" bind:value={title} placeholder="Epic title..." class="input {!!title ? "" : "is-danger"}">
             <p class="help">Title</p>
             <br>
-            <input type="text" bind:value={body} placeholder="Epic body">
+            <textarea type="text" bind:value={body} placeholder="Epic body" class="textarea {!!body ? "" : "is-danger"}"></textarea>
             <p class="help">Body</p>
             <br>
             <button class="button is-info" on:click={create_question}>Create</button>
