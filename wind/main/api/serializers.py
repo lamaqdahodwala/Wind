@@ -9,4 +9,4 @@ class QuestionSerializer(ModelSerializer):
     op = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Question
-        fields = ("op", "title", "body", 'id')
+        fields = ("op", "title", "body")
