@@ -9,3 +9,11 @@ class Question(models.Model):
 
     def __str__(self) -> str:
         return f'{self.title} | {self.op.username}'
+
+class Answer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    body = models.TextField()
+
+    def __str__(self) -> str:
+        return f'Answer on {self.question.title}'
