@@ -4,10 +4,6 @@
     async function load_question(){
         let resp = await fetch(`/api/v1/question/${pk}`)
         let json = await resp.json()
-        let get_username = await fetch(json['op'])
-        let d = await get_username.json()
-        name = d['username']
-        
         return json
     }
 </script>
@@ -19,12 +15,29 @@
         <div class="container">
             <div class="box is-fluid">
                 <h1 class="title">{data.title}</h1>
-                <h1 class="subtitle">Written by {name}</h1>
+                <h1 class="subtitle">Written by {data.op.username}</h1>
                 <hr>
                 <p class="content">
                     {data.body}
                 </p>
             </div>
+            <hr>
+            <div class="has-text-centered">
+                <h1 class="title">Answers</h1>
+            </div>
+            {#each data.answers as i}
+                <div class="box is-fluid">
+                    <p class="content">
+                        {i.body}
+                    </p>
+                    <br>
+                    Written by {i.user.username}
+                </div>
+            {:else}
+                <div class="has-text-centered">
+                    <p>No answers yet</p>
+                </div>
+            {/each}
         </div>
     {:catch error}
         <p>{error}</p>
