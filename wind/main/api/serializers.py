@@ -1,8 +1,13 @@
 from django.contrib.auth.models import User
-from ..models import Question
+from ..models import Question, Answer
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 
+
+
+class AnswerSerializer(ModelSerializer):
+    user = serializers.HyperlinkedRelatedField(default=serializers.CurrentUserDefault(), queryset=User.objects.all(), view_name='user-detail')
+    question = serializers.RelatedField()
 
 
 class QuestionSerializer(ModelSerializer):

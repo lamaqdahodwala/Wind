@@ -17,9 +17,3 @@ class QuestionViewSet(
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
-class UserViewSet(
-    mixins.RetrieveModelMixin,
-    GenericViewSet
-):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
