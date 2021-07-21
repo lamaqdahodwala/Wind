@@ -48,12 +48,13 @@
             <div class="has-text-centered">
                 <h1 class="title">Answers</h1>
             </div>
+            <br><br>
             {#each data.answers as i}
                 <div class="box is-fluid">
-                    <p class="content">
+                    <p>
                         {i.body}
                     </p>
-                    <br>
+                    <hr>
                     Written by {i.user.username}
                 </div>
             {:else}
