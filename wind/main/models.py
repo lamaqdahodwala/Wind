@@ -8,4 +8,5 @@ class Question(models.Model):
 
 class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(Question,  on_delete=models.CASCADE, related_name='answers')
     content = models.TextField()

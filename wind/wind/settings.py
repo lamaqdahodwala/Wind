@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'main.apps.MainConfig',
-    'django_svelte'
+    'django_svelte',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
