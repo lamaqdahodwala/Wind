@@ -31,4 +31,21 @@ class Query(graphene.ObjectType):
     def resolve_user_by_id(root, info, id):
         return User.objects.get(pk=id)
 
-schema = graphene.Schema(query=Query)
+class QuestionMutate(graphene.Mutation):
+    class Arguments:
+        title = graphene.String()
+        body = graphene.String()
+        user = graphene.Int()
+    
+    question = graphene.Field(QuestionType)
+
+    @classmethod
+    def mutate(cls, root, info, title, body, user):
+        question = Question(title=title, body=body, user=User.objects.get(id=user))
+        question.save()
+        return QuestionMutate(question=question)
+
+class Mutation(graphene.ObjectType):
+    create_question = QuestionMutate.Field()
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
