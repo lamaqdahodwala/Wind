@@ -16,7 +16,7 @@ class AnswerType(DjangoObjectType):
 class UserType(DjangoObjectType):
     class Meta:
         model = User
-        fields = ('username','questions')
+        fields = ('username','questions', 'id')
 
 class Query(graphene.ObjectType):
     all_questions = graphene.List(QuestionType)
