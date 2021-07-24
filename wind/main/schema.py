@@ -11,17 +11,18 @@ class QuestionType(DjangoObjectType):
 class AnswerType(DjangoObjectType):
     class Meta:
         model = Answer
-        fields = ('user', 'content')
+        fields = ('user', 'content', 'question')
 
 class UserType(DjangoObjectType):
     class Meta:
         model = User
-        fields = ('username','questions', 'id')
+        fields = ('username','questions', 'id', 'answers')
 
 class Query(graphene.ObjectType):
     all_questions = graphene.List(QuestionType)
     single_question = graphene.Field(QuestionType, pk=graphene.Int())
     user_by_id = graphene.Field(UserType, id=graphene.Int())
+    current_user = graphene.Field(UserType)
     def resolve_all_questions(root, info):
         return Question.objects.all()
 
@@ -30,6 +31,10 @@ class Query(graphene.ObjectType):
     
     def resolve_user_by_id(root, info, id):
         return User.objects.get(pk=id)
+    
+    def resolve_current_user(root, info):
+        uid = info.context.user.id
+        return User.objects.get(id=uid)
 
 class QuestionMutate(graphene.Mutation):
     class Arguments:
