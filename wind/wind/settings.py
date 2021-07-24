@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR.joinpath('static'))
 
 STATICFILES_DIRS = [ 
-    str(BASE_DIR.parent / 'svelte' / 'public' / 'build')
+    str(BASE_DIR.parent / 'frontend' / 'public' / 'build')
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

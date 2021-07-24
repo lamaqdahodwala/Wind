@@ -4,7 +4,7 @@
 		{
 			"type": "npm",
 			"script": "build",
-			"path": "svelte/",
+			"path": "frontend/",
 			"group": {
 				"kind": "build",
 				"isDefault": true
