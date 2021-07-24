@@ -21,3 +21,5 @@ class Query(graphene.ObjectType):
 
     def resolve_single_question(root, info, pk):
         return Question.objects.get(pk=pk)
+
+schema = graphene.Schema(query=Query)
