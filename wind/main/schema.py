@@ -6,12 +6,12 @@ from .models import Question, Answer
 class QuestionType(DjangoObjectType):
     class Meta:
         model = Question
-        fields = ('title', 'body', 'user', 'answers', 'pk')
+        fields = ('title', 'body', 'user', 'answers', 'id')
 
 class AnswerType(DjangoObjectType):
     class Meta:
         model = Answer
-        fields = ('user', 'content', 'question', 'pk')
+        fields = ('user', 'content', 'question', 'id')
 
 class UserType(DjangoObjectType):
     class Meta:
