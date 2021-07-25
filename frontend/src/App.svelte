@@ -12,10 +12,11 @@
     {#await load_questions()}
         <progress class="progress"></progress>
     {:then data} 
+        <br><br>
         {#each data['allQuestions'] as i}
             <div class="card">
                 <div class="card-header">
-                    <h1 class="card-header-title title">{i.title}</h1>
+                    <a href='/question/{i.pk}' class="card-header-title title">{i.title}</a>
                 </div>
                 <div class="card-content">
                     <div class="content">
