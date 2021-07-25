@@ -5,11 +5,25 @@
     export let pk
 
     async function load_question(){
-        let resp = await send_gql_request()
+        let resp = await send_gql_request(queries.single_question, {'pk': pk})
         return resp['data']['singleQuestion']
     }
 </script>
-
-<p>
-    The pk is {pk}
-</p>
+<br><br>
+{#await load_question()}
+    <progress class="progress"></progress>
+{:then data} 
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-header-title title">{data.title}</h1>
+            </div>
+            <div class="card-content">
+                {data.body}
+                <br><br>
+                <hr>
+                <p>Written by <a>{data.user.username}</a></p>
+            </div>
+        </div>
+    </div>
+{/await}

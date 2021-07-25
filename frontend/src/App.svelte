@@ -25,6 +25,10 @@
                 </div>
             </div>
             <br><br>
+            <div class="has-text-centered">
+                <h1 class="title is-2">Answers</h1>
+            </div>
+            
         {/each}
     {/await}
 </div>
