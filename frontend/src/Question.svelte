@@ -3,6 +3,7 @@
     import { queries } from './assets/queries.js'
 
     export let pk
+    let answer_content;
 
     async function load_question(){
         let resp = await send_gql_request(queries.single_question, {'pk': pk})
@@ -25,8 +26,27 @@
                 <p>Written by <a>{data.user.username}</a></p>
             </div>
         </div>
+        <br>
         <div class="has-text-centered">
             <h1 class="title is-2">Answers</h1>
         </div>
+        <hr>
+        {#each data.answers as i}
+            <div class="content">
+                {i.content}
+                <br><br>
+                written by <a>{i.user.username}</a>
+            </div>
+        {:else}
+            <div class="has-text-centered">
+                <h1 class="subtitle">No answers yet.</h1>
+            </div>
+        {/each}
+        <br><br>
+        <h1 class="subtitle">Got an answer?</h1>
+        <textarea bind:value={answer_content} cols="30" rows="5" class="textarea" placeholder="Answer here..."></textarea>
+        <br>
+        <button class="button is-info is-outlined">Post answer</button>
     </div>
 {/await}
+<br><br><br>
