@@ -1,12 +1,12 @@
 import { getCookie } from "./helpers.js";
 
-export async function send_gql_request(data){
+export async function send_gql_request(data, vars=null){
     
     let resp = await fetch('/graphql', {
         method: "POST",
         body: JSON.stringify({
             "query": data,
-            variables: null
+            variables: vars
         }),
         headers: {
             "X-CSRFToken": getCookie('csrftoken'),
