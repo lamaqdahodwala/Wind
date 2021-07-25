@@ -25,5 +25,8 @@
                 <p>Written by <a>{data.user.username}</a></p>
             </div>
         </div>
+        <div class="has-text-centered">
+            <h1 class="title is-2">Answers</h1>
+        </div>
     </div>
 {/await}
