@@ -34,7 +34,7 @@
         {#each data.answers as i}
             <div class="box is-fluid">
                 <div class="content">
-                    {i.content}
+                    <div class="is-size-5">{i.content}</div>
                     <br><br>
                     written by <a href='/user/{i.user.id}'>{i.user.username}</a>
                 </div>
