@@ -23,7 +23,7 @@
                 {data.body}
                 <br><br>
                 <hr>
-                <p>Written by <a>{data.user.username}</a></p>
+                <p>Written by <a href='/user/{data.user.id}'>{data.user.username}</a></p>
             </div>
         </div>
         <br>
@@ -32,11 +32,14 @@
         </div>
         <hr>
         {#each data.answers as i}
-            <div class="content">
-                {i.content}
-                <br><br>
-                written by <a>{i.user.username}</a>
+            <div class="box is-fluid">
+                <div class="content">
+                    {i.content}
+                    <br><br>
+                    written by <a href='/user/{i.user.id}'>{i.user.username}</a>
+                </div>
             </div>
+            <br><br>
         {:else}
             <div class="has-text-centered">
                 <h1 class="subtitle">No answers yet.</h1>
