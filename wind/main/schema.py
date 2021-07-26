@@ -50,7 +50,22 @@ class QuestionMutate(graphene.Mutation):
         question.save()
         return QuestionMutate(question=question)
 
+class AnswerMutate(graphene.Mutation):
+    class Arguments:
+        content = graphene.String()
+        question = graphene.Int()
+
+    answer = graphene.Field(AnswerType)
+
+    @classmethod
+    def mutate(cls, root, info, content, question):
+        if info.context.user:
+            answer = Answer(content=content, question=Question.objects.get(pk=question), user=User.objects.get(id=info.context.user.id))
+            answer.save()
+            return AnswerMutate(answer=answer)
+
 class Mutation(graphene.ObjectType):
     create_question = QuestionMutate.Field()
+    create_answer = AnswerMutate.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
